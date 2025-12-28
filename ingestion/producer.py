@@ -19,7 +19,7 @@ producer = KafkaProducer(
 
 def handle_trade(event):
     symbol = event["data"]["s"]
-    event["ingestion_time"] = time.time() * 1000 
+    event["data"]["ingestion_time"] = int(time.time() * 1000) # i was sending the ingestion_time directly, spark was expecting it to be data -> ingestion_time, so i had to change so ingestion time was inside data.
     producer.send(
         TOPIC,
         key=symbol,

@@ -162,8 +162,22 @@ metrics_df = (
         col("symbol"),
         col("window.start").alias("window_start"),
         col("window.end").alias("window_end"),
-        "*"
-    ) 
+        col("trade_count"),
+        col("total_volume"),
+        col("avg_price"),
+        col("min_price"),
+        col("max_price"),
+        col("price_stddev"),
+        col("vwap"),
+        col("buy_volume"),
+        col("sell_volume"),
+        col("buy_sell_ratio"),
+        col("trade_intensity"),
+        col("liquidity_proxy"),
+        col("avg_exchange_latency_ms"),
+        col("avg_source_latency_ms"),
+        col("avg_end_to_end_latency_ms")
+    ) # i thought ill simply do a * and select all the rows but i messed up bad.
 
 )
 
